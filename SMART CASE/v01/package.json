@@ -1,0 +1,190 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "smart-case",
+  "version": "0.1.0",
+  "title": "Smart Case",
+  "description": "Case transformations that respect acronyms and user-defined exceptions",
+  "icon": "extension-icon.png",
+  "author": "simon",
+  "license": "MIT",
+  "categories": ["Developer Tools", "Productivity"],
+  "commands": [
+    {
+      "name": "smart-case",
+      "title": "Smart Case",
+      "description": "v01 — Transform clipboard or selected text",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "inputSource",
+      "type": "dropdown",
+      "title": "Input Source",
+      "description": "Where to read text from when the extension opens.",
+      "data": [
+        { "title": "Clipboard", "value": "clipboard" },
+        { "title": "Selected Text", "value": "selected" }
+      ],
+      "default": "selected",
+      "required": false
+    },
+    {
+      "name": "defaultAction",
+      "type": "dropdown",
+      "title": "Primary Action",
+      "description": "What the Enter key does.",
+      "data": [
+        { "title": "Paste to App", "value": "paste" },
+        { "title": "Copy to Clipboard", "value": "copy" }
+      ],
+      "default": "paste",
+      "required": false
+    },
+    {
+      "name": "autoPreserveAcronyms",
+      "type": "checkbox",
+      "title": "Acronym Handling",
+      "label": "Auto-preserve ALL-CAPS words (2+ letters) as acronyms in Title Case",
+      "description": "Keeps NASA, FBI, API etc. as-is when they appear all-uppercase in the input.",
+      "default": true,
+      "required": false
+    },
+    {
+      "name": "titleCaseMode",
+      "type": "dropdown",
+      "title": "Title Case",
+      "description": "Pinned = shown at top. Shown = in Smart section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "pinned",
+      "required": false
+    },
+    {
+      "name": "upperCaseMode",
+      "type": "dropdown",
+      "title": "UPPER CASE",
+      "description": "Pinned = shown at top. Shown = in Smart section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "pinned",
+      "required": false
+    },
+    {
+      "name": "lowerCaseMode",
+      "type": "dropdown",
+      "title": "lower case",
+      "description": "Pinned = shown at top. Shown = in Smart section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "sentenceCaseMode",
+      "type": "dropdown",
+      "title": "Sentence case",
+      "description": "Pinned = shown at top. Shown = in Smart section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "camelCaseMode",
+      "type": "dropdown",
+      "title": "camelCase",
+      "description": "Pinned = shown at top. Shown = in Code section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "pascalCaseMode",
+      "type": "dropdown",
+      "title": "PascalCase",
+      "description": "Pinned = shown at top. Shown = in Code section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "snakeCaseMode",
+      "type": "dropdown",
+      "title": "snake_case",
+      "description": "Pinned = shown at top. Shown = in Code section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "kebabCaseMode",
+      "type": "dropdown",
+      "title": "kebab-case",
+      "description": "Pinned = shown at top. Shown = in Code section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    },
+    {
+      "name": "constantCaseMode",
+      "type": "dropdown",
+      "title": "CONSTANT_CASE",
+      "description": "Pinned = shown at top. Shown = in Code section. Hidden = not shown.",
+      "data": [
+        { "title": "Pinned", "value": "pinned" },
+        { "title": "Shown", "value": "shown" },
+        { "title": "Hidden", "value": "hidden" }
+      ],
+      "default": "shown",
+      "required": false
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.104.5",
+    "change-case": "^5.4.4"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^2.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build": "ray build",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}

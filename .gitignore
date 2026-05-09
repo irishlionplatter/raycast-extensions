@@ -1,0 +1,19 @@
+# Dependencies
+**/node_modules/
+
+# Build output
+**/dist/
+**/.ray-cache/
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
